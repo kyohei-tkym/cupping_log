@@ -1,0 +1,12 @@
+<h2><%= @user.name %>'s Profile</h2>
+<div class="edit-profile"><%= link_to "Edit", edit_user_path(@user) %></div>
+<div class="profile-details">
+  <div class="profile-icon">
+    <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "img/no_image.jpg"%>
+  </div>
+  <h3 class="profile-text"><%= @user.name %></h3>
+  <div class="profile-introduction">
+    <P>自己紹介</P>
+    <%= @user.introduction %>
+  </div>
+</div>
