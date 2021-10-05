@@ -44,14 +44,30 @@
       　<%= f.label :"メモ" %>
       　<%= f.text_area :memo, placeholder:"例）ベリーのような酸味/ナッツのような香り お店の雰囲気も良かった！ etc...", class:"form-input-introduction" %>
       </div>
-      <!--星評価-->
+
+      <div class="star-form-group" id="star1">               <%#id要素の付与がポイント%>
+        <%= f.label :rate,'総合評価' %>　<%#保存したいカラムの指定%>
+      </div>
+
+
       <div class="form-detail">
       　<%= f.label :"画像" %>
       　<%= f.attachment_field :log_images_images, multiple: true %>
       　<p>画像を複数投稿する際は、Shiftキーを押しながらマウスでクリックして選択してください。</p>
       </div>
+
       <div class="form-detail">
         <%= f.submit :"Logを保存する"  %>
       </div>
     <% end %>
+    <script>
+    $('#star1').raty({
+      size     : 38,                                    //星のサイズ
+      starOff:  '<%= asset_path('star-off.png') %>',    //imagesフォルダより星画像の呼び出し
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'log[rate]',     //reviewモデルのcomfortカラムに保存
+      half: true,                       //星半分を許可する。DBには0.5単位の数値が保存される
+    });
+    </script>
   </div>
