@@ -36,7 +36,7 @@ class LogsController < ApplicationController
 
   private
 
-  def post_params
+  def log_params
     params.require(:log).permit(:coffee_name, :shop_name, :price, :drink_date, :brew, :roast, :taste, :body, :memo, :rate, log_images_images: [])
   end
 end
