@@ -1,0 +1,48 @@
+  <div class="show-title">
+    <h2><%= @log.coffee_name %></h2>
+  </div>
+  <div class="show-container">
+    <div class="show-image">
+      <% @log.log_images.each do |log_image| %>
+      　<%= attachment_image_tag log_image, :image, size: "100x100" %>
+      <% end %>
+    </div>
+    <div class="show-contents">
+      <div class="show-details">
+        <p class="show-text">ユーザー</p>
+        <p class="show-text bold"><%= link_to @log.user.name, user_path(@log.user_id) %></p>
+        <p class="show-text">購入店</p>
+        <p class="show-text bold"><%= @log.shop_name %></p>
+        <p class="show-text">購入価格</p>
+        <p class="show-text bold"><%= @log.price %>円</p>
+        <p class="show-text">淹れ方</p>
+        <p class="show-text bold"><%= @log.brew %></p>
+        <p class="show-text">焙煎度</p>
+        <p class="show-text bold"><%= @log.roast %></p>
+        <p class="show-text">酸味・苦味</p>
+        <p class="show-text bold"><%= @log.taste %></p>
+        <p class="show-text">ボディ（コク）</p>
+        <p class="show-text bold"><%= @log.body %></p>
+        <p class="show-text">メモ</p>
+        <p class="show-text bold"><%= @log.memo %></p>
+        <p class="show-text">総合評価</p>
+        <p class="star-rate" data-score="<%= @log.rate %>"></p>
+        <!--削除ボタン-->
+        <% if @log.user == current_user %>
+          <p class="show-text"><%= link_to "Destroy", log_path(@log), method: :delete, class:"destroy" %></p>
+        <% end %>
+        <!--編集画面へのリンクボタン-->
+        <% if @log.user == (current_user) %>
+          <%= link_to "Edit", edit_log_path(@log) %>
+        <% end %>
+      </div>
+    </div>
+<script>
+  $('.star-rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
