@@ -16,6 +16,7 @@ class LogsController < ApplicationController
 
   def show
     @log = Log.find(params[:id])
+    @log_comment = LogComment.new
   end
 
   def edit
