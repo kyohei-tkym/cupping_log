@@ -10,4 +10,9 @@
     <%= @user.introduction %>
   </div>
 </div>
+<% if current_user.following?(@user) %>
+  <%= link_to "Unfollow", user_relationships_path(@user.id), method: :delete %>
+<% else %>
+  <%= link_to "Follow", user_relationships_path(@user.id), method: :post %>
+<% end %>
 <%= render 'logs/log-index', logs: @logs %>
