@@ -46,3 +46,25 @@
     path: '/assets/'
   });
 </script>
+<div class="comment">
+    <% @log.log_comments.each do |log_comment| %>
+    <div class="comment-index">
+      <p class="comment-icon"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 40, 40, fallback: "img/no_image.jpg"%></p>
+      <p class="comment-details"><%= log_comment.user.name %></p>
+      <p class="comment-details"><%= log_comment.created_at.strftime('%Y/%m/%d') %></p>
+      <p class="comment-body"><%= log_comment.comment %></p>
+      <div class="comment-details">
+        <% if log_comment.user == current_user %>
+          <%= link_to "削除", log_log_comment_path(log_comment.log, log_comment), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="comment-new">
+  <%= form_with(model:[@log, @log_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"comment-form" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
