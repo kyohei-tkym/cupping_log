@@ -1,0 +1,19 @@
+<% logs.each do |log| %>
+  <div class="index-cantainer">
+    <div class="index-details">
+      <p class="index-text"><%= link_to log.coffee_name, log_path(log.id) %></p>
+      <p class="index-text">購入店：<%= log.shop_name %></p>
+      <p class="index-text">ユーザー：<%= link_to log.user.name, user_path(log.user_id) %></p>
+      <p class="star-rate" data-score="<%= log.rate %>"></p>
+    </div>
+  </div>
+<% end %>
+<script>
+  $('.star-rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
