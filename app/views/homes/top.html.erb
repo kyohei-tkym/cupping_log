@@ -1,1 +1,18 @@
-<h1>Cupping Log</h1>
+<div id="top" class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="text-box">
+        <h5 class="text-center" style="margin-top: 150px">
+          Cupping Logはあなたのコーヒーブレイクを更に楽しくしてくれるアプリです。<br />
+          飲んだコーヒーの記録はもちろん、感想を友達とシェア出来るので、<br />
+          また新しい発見があるはずです！
+        </h5>
+        <% if user_signed_in? %>
+          <h6 class="text-center" style="margin-top: 20px"><%= link_to "My page", user_path(current_user.id), class:"btn btn-outline-secondary" %></h6>
+        <% else %>
+          <h6 class="text-center" style="margin-top: 20px"><%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-primary" %></h6>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
