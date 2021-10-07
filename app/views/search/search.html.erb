@@ -1,0 +1,55 @@
+<div class="container">
+    <% if @model == "user" %>
+    <h2>'<%= @value %>'に一致するユーザー</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ユーザー名</th>
+                <th>自己紹介</th>
+            </tr>
+        </thead>
+    <% @datas.each do |user| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %>
+                </th>
+                <th>
+                    <%= user.name %>
+                </th>
+                <th>
+                    <%= user.introduction %>
+                </th>
+            </tr>
+        </tbody>
+    <% end %>
+    <% elsif @model == "log" %>
+    <h2>'<%= @value %>'に一致するLog</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>コーヒーの名前</th>
+                <th>購入店</th>
+            </tr>
+        </thead>
+        <% @datas.each do |log| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(log.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %>
+                </th>
+                <th>
+                    <%= log.coffee_name %>
+                </th>
+                <th>
+                    <%= log.shop_name %>
+                </th>
+            </tr>
+        </tbody>
+        <% end %>
+    <% end %>
+    </table>
+  </div>
+</div>
