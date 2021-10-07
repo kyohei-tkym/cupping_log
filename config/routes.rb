@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   root to: 'homes#top'
 
   resources :users, only: [:show, :edit, :update] do
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
   resources :logs do
     resources :log_comments, only: [:create, :destroy]
   end
+
+  get '/search' => 'search#search'
 end
