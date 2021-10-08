@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @logs = Log.all
+    @logs = @user.log
   end
 
   def edit
