@@ -1,10 +1,19 @@
 <% logs.each do |log| %>
   <div class="index-cantainer">
-    <div class="index-details">
-      <p class="index-text"><%= link_to log.coffee_name, log_path(log.id) %></p>
-      <p class="index-text">購入店：<%= log.shop_name %></p>
-      <p class="index-text">ユーザー：<%= link_to log.user.name, user_path(log.user_id) %></p>
-      <p class="star-rate" data-score="<%= log.rate %>"></p>
+    <div class="row">
+      <div class="comment-icon col-4">
+        <%= link_to log_path(log.id) do %>
+          <% log.log_images.first(1).each do |log_image| %>
+        　　<%= attachment_image_tag log_image, :image, size: "150x150" %>
+        　<% end %>
+        <% end %>
+      </div>
+      <div class="col-8 pt-4">
+        <p class="index-text"><%= link_to log.coffee_name, log_path(log.id) %></p>
+        <p class="index-text">購入店：<%= log.shop_name %></p>
+        <p class="index-text">ユーザー：<%= link_to log.user.name, user_path(log.user_id) %></p>
+        <p class="star-rate" data-score="<%= log.rate %>">総合評価：</p>
+      </div>
     </div>
   </div>
 <% end %>
