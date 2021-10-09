@@ -2,30 +2,8 @@
     <% if @model == "user" %>
     <div class="container">
         <h2 class="text-center pt-5">'<%= @value %>'に一致するユーザー</h2>
-        <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>ユーザー名</th>
-                <th>自己紹介</th>
-            </tr>
-        </thead>
-        <% @datas.each do |user| %>
-        <tbody>
-            <tr>
-                <th>
-                    <%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %>
-                </th>
-                <th class="pt-3">
-                    <%= link_to user.name, user_path(user.id) %>
-                </th>
-                <th class="pt-3">
-                    <%= user.introduction %>
-                </th>
-            </tr>
-        </tbody>
+        <%= render 'search-user-index', datas: @datas %>
     </div>
-    <% end %>
     <% elsif @model == "log" %>
     <div class="container">
     <h2 class="text-center pt-5">'<%= @value %>'に一致するLog</h2>
