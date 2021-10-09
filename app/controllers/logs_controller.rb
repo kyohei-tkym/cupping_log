@@ -12,6 +12,7 @@ class LogsController < ApplicationController
 
   def index
     @logs = Log.all
+    @log = Log.new
   end
 
   def show
