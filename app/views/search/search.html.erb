@@ -1,8 +1,8 @@
 <div class="container">
     <% if @model == "user" %>
     <div class="container">
-    <h2 class="text-center pt-5">'<%= @value %>'に一致するユーザー</h2>
-    <table class="table">
+        <h2 class="text-center pt-5">'<%= @value %>'に一致するユーザー</h2>
+        <table class="table">
         <thead>
             <tr>
                 <th></th>
@@ -10,7 +10,7 @@
                 <th>自己紹介</th>
             </tr>
         </thead>
-    <% @datas.each do |user| %>
+        <% @datas.each do |user| %>
         <tbody>
             <tr>
                 <th>
@@ -24,6 +24,7 @@
                 </th>
             </tr>
         </tbody>
+    </div>
     <% end %>
     <% elsif @model == "log" %>
     <div class="container">
