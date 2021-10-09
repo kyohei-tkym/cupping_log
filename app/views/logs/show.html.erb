@@ -1,70 +1,37 @@
-  <div class="show-title">
-    <h2><%= @log.coffee_name %></h2>
-  </div>
-  <div class="show-container">
-    <div class="show-image">
+<div class="container" >
+  <div class="row">
+    <div class="col-6 col-md-8 p-5">
+      <h2><%= @log.coffee_name %></h2>
       <% @log.log_images.each do |log_image| %>
-      　<%= attachment_image_tag log_image, :image, size: "100x100" %>
+      　<%= attachment_image_tag log_image, :image, size: "150x150", class:"mt-2 mb-3" %>
       <% end %>
-    </div>
-    <div class="show-contents">
-      <div class="show-details">
-        <p class="show-text">ユーザー</p>
-        <p class="show-text bold"><%= link_to @log.user.name, user_path(@log.user_id) %></p>
-        <p class="show-text">購入店</p>
-        <p class="show-text bold"><%= @log.shop_name %></p>
-        <p class="show-text">購入価格</p>
-        <p class="show-text bold"><%= @log.price %>円</p>
-        <p class="show-text">淹れ方</p>
-        <p class="show-text bold"><%= @log.brew %></p>
-        <p class="show-text">焙煎度</p>
-        <p class="show-text bold"><%= @log.roast %></p>
-        <p class="show-text">酸味・苦味</p>
-        <p class="show-text bold"><%= @log.taste %></p>
-        <p class="show-text">ボディ（コク）</p>
-        <p class="show-text bold"><%= @log.body %></p>
-        <p class="show-text">メモ</p>
-        <p class="show-text bold"><%= @log.memo %></p>
-        <p class="show-text">総合評価</p>
-        <p class="star-rate" data-score="<%= @log.rate %>"></p>
-        <!--削除ボタン-->
-        <% if @log.user == current_user %>
-          <p class="show-text"><%= link_to "Destroy", log_path(@log), method: :delete, class:"destroy" %></p>
-        <% end %>
+      <p class="show-text bold">ユーザー：<%= link_to @log.user.name, user_path(@log.user_id) %></p>
+      <p class="show-text bold">購入店：<%= @log.shop_name %></p>
+      <p class="show-text bold">購入価格：<%= @log.price %>円</p>
+      <p class="show-text bold">淹れ方：<%= @log.brew %></p>
+      <p class="show-text bold">焙煎度：<%= @log.roast %></p>
+      <p class="show-text bold">酸味・苦味：<%= @log.taste %></p>
+      <p class="show-text bold">ボディ（コク）：<%= @log.body %></p>
+      <p class="show-text bold">メモ：<%= @log.memo %></p>
+      <p class="star-rate" data-score="<%= @log.rate %>">総合評価：</p>
+      <% if @log.user == current_user %>
         <!--編集画面へのリンクボタン-->
-        <% if @log.user == (current_user) %>
-          <%= link_to "Edit", edit_log_path(@log) %>
-        <% end %>
-      </div>
+        <%= link_to "Edit", edit_log_path(@log), class:"btn btn-outline-success" %>
+        <!--削除ボタン-->
+        <%= link_to "Destroy", log_path(@log), method: :delete, class:"btn btn-outline-danger" %>
+      <% end %>
+      <script>
+        $('.star-rate').raty({
+        readOnly: true,
+        score: function() {
+        return $(this).attr('data-score');
+        },
+        path: '/assets/'
+        });
+      </script>
     </div>
-<script>
-  $('.star-rate').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
-<div class="comment">
-    <% @log.log_comments.each do |log_comment| %>
-    <div class="comment-index">
-      <p class="comment-icon"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 40, 40, fallback: "img/no_image.jpg"%></p>
-      <p class="comment-details"><%= log_comment.user.name %></p>
-      <p class="comment-details"><%= log_comment.created_at.strftime('%Y/%m/%d') %></p>
-      <p class="comment-body"><%= log_comment.comment %></p>
-      <div class="comment-details">
-        <% if log_comment.user == current_user %>
-          <%= link_to "削除", log_log_comment_path(log_comment.log, log_comment), method: :delete %>
-        <% end %>
-      </div>
+    <div class="col-12 col-sm-6 col-md-4 p-5">
+      <%= render 'log-comment', log: @log, log_comment: @log_comment %>
     </div>
-    <% end %>
   </div>
-</div>
-<div class="comment-new">
-  <%= form_with(model:[@log, @log_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"comment-form" %>
-    <%= f.submit "送信する" %>
-  <% end %>
 </div>

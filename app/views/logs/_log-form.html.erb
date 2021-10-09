@@ -1,0 +1,75 @@
+<div class="container pb-4">
+  <%= form_with model: log, local: true do |f| %>
+    <div class="form-group">
+    　<%= f.label :"コーヒーの産地・銘柄・処理方法" %>
+    　<%= f.text_field :coffee_name, placeholder:"例）エチオピア ボンベ ナチュラル", class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"購入店" %>
+    　<%= f.text_field :shop_name, placeholder:"例）DMM COFFEE", class:"form-control"  %>
+    </div>
+
+    <div class="form-row">
+      <div class="col" >
+    　<%= f.label :"購入価格" %>
+    　<%= f.text_field :price, placeholder:"1500", class:"form-control" %>
+    　</div>
+    　<p class="col pt-5">円</p>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"購入日・飲んだ日" %>
+    　<%= f.date_select :drink_date, class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"淹れ方" %>
+    　<%= f.select :brew, [["ハンドドリップ"],["コールドブリュー（水出し）"],["フレンチプレス"],["エスプレッソ"],["その他"]], class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"焙煎度" %>
+    　<%= f.select :roast, [["浅煎り"],["中浅煎り"],["中煎り"],["中深煎り"],["深煎り"]], class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"酸味・苦味" %>
+    　<%= f.select :taste, [["酸味が強い"],["やや酸味が強い"],["バランス"],["やや苦味が強い"],["苦味が強い"]], class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"ボディ（コク）" %>
+    　<%= f.select :body, [["フルボディ（コクが強い）"],["ミディアムボディ（程よいコク）"],["ライトボディ（すっきり）"]], class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"メモ" %>
+    　<%= f.text_area :memo, placeholder:"例）ベリーのような酸味/ナッツのような香り お店の雰囲気も良かった！ etc...", class:"form-control"  %>
+    </div>
+
+    <div class="form-group star-form-group" id="star1">
+      <%= f.label :rate,'総合評価　' %>
+    </div>
+
+    <div class="form-group">
+    　<%= f.label :"画像（画像を３枚まで投稿できます。Shiftキーを押しながらマウスでクリックして選択してください。）" %>
+    　<%= f.attachment_field :log_images_images, multiple: true, class:"form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit :"Logを保存する", class:"btn btn-success"  %>
+    </div>
+  <% end %>
+  <!--星評価JS記述-->
+  <script>
+  $('#star1').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'log[rate]',
+    half: true,
+  });
+  </script>
+</div>
