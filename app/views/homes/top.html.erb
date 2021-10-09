@@ -10,7 +10,7 @@
         <% if user_signed_in? %>
           <h6 class="text-center" style="margin-top: 20px"><%= link_to "My page", user_path(current_user.id), class:"btn btn-outline-secondary" %></h6>
         <% else %>
-          <h6 class="text-center" style="margin-top: 20px"><%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-secondary" %></h6>
+          <h6 class="text-center" style="margin-top: 20px"><%= link_to "はじめる", new_user_registration_path, class:"btn btn-outline-secondary" %></h6>
         <% end %>
       </div>
     </div>

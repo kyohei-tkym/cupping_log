@@ -2,7 +2,7 @@
   <h2 class="mb-3">コメント</h2>
   <% log.log_comments.each do |log_comment| %>
   <div class="row">
-    <div class="comment-icon col-3"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 60, 60, fallback: "img/no_image.jpg"%></div>
+    <div class="comment-icon col-3"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 60, 60, fallback: "img/no_image.jpg", class:"rounded-circle"%></div>
     <div class="comment-details col-9">
       <p><%= log_comment.user.name %></p>
       <p><%= log_comment.created_at.strftime('%Y/%m/%d') %></p>
