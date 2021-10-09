@@ -1,0 +1,8 @@
+<div class="container">
+  <h2 class="text-center pt-5">Following</h2>
+  <% if @users.exists? %>
+    <%= render 'search/search-user-index', datas: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+</div>
