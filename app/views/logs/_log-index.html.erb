@@ -12,17 +12,19 @@
         <p class="index-text"><%= link_to log.coffee_name, log_path(log.id), class:"text-decoration-none" %></p>
         <p class="index-text">購入店：<%= log.shop_name %></p>
         <p class="index-text">ユーザー：<%= link_to log.user.name, user_path(log.user_id), class:"text-decoration-none" %></p>
-        <p class="star-rate" data-score="<%= log.rate %>">総合評価：</p>
+        <p id="star-rate-<%= log.id %>">総合評価：</p>
+        <script>
+        $('#star-rate-<%= log.id %>').raty({
+         size: 38,
+         starOff:  '<%= asset_path('star-off.png') %>',
+         starOn : '<%= asset_path('star-on.png') %>',
+         starHalf: '<%= asset_path('star-half.png') %>',
+         half: true,
+         readOnly: true,
+         score: <%= log.rate %>,
+        });
+        </script>
       </div>
     </div>
   </div>
 <% end %>
-<script>
-  $('.star-rate').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
