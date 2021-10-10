@@ -49,7 +49,8 @@
     </div>
 
     <div class="form-group star-form-group" id="star1">
-      <%= f.label :rate,'総合評価　' %>
+      <%= f.label :rate,"総合評価", class:"star-form-group" %>
+      <%= f.hidden_field :rate, id: :rate %>
     </div>
 
     <div class="form-group">
@@ -70,6 +71,6 @@
     starHalf: '<%= asset_path('star-half.png') %>',
     scoreName: 'log[rate]',
     half: true,
-  });
-  </script>
-</div>
+ });
+ </script>
+
