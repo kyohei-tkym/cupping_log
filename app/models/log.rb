@@ -5,7 +5,7 @@ class Log < ApplicationRecord
   has_many :log_comments, dependent: :destroy
 
   validates :coffee_name, presence: true
-  validates :shop_na, presence: true
+  validates :shop_name, presence: true
 
   enum brew: { ハンドドリップ:0, コールドブリュー（水出し）:1, フレンチプレス:2, エスプレッソ:3, その他:4 }
   enum roast: { 浅煎り:0, 中浅煎り:1, 中煎り:2, 中深煎り:3, 深煎り:4 }
