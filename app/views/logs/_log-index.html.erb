@@ -13,6 +13,7 @@
         <p class="index-text">購入店：<%= log.shop_name %></p>
         <p class="index-text">ユーザー：<%= link_to log.user.name, user_path(log.user_id), class:"text-decoration-none" %></p>
         <p id="star-rate-<%= log.id %>">総合評価：</p>
+        <!--5段階評価の表示-->
         <script>
         $('#star-rate-<%= log.id %>').raty({
          size: 38,

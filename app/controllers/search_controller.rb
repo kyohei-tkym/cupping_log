@@ -8,10 +8,10 @@ class SearchController < ApplicationController
   private
 
   def search_for(model, value)
-    #-------------------ユーザー名部分一致検索----------------------
+    #----ユーザー名部分一致検索----
     if model == 'user'
       User.where("name LIKE ?", "%#{value}%")
-    #-------------------投稿タイトル部分一致検索--------------------
+    #----部分一致検索----
     elsif model == 'log'
       Log.where("coffee_name LIKE ?", "%#{value}%")
     end

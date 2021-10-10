@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'search/search'
   root to: 'homes#top'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   devise_for :users
 
   resources :users, only: [:show, :edit, :update] do

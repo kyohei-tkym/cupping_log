@@ -16,7 +16,7 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   private
-
+  # ----アクセス権限----
   def correct_user
     user = User.find(params[:id])
     if current_user != user
