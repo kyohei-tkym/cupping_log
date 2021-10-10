@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+#top {
+  background-image: image-url('cupping_log_top.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+main{
+  background-image: image-url('background.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: #555555;
+}

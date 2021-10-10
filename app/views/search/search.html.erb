@@ -1,0 +1,13 @@
+<div class="container">
+    <% if @model == "user" %>
+    <div class="container">
+        <h2 class="text-center pt-5">'<%= @value %>'に一致するユーザー</h2>
+        <%= render 'search-user-index', datas: @datas %>
+    </div>
+    <% elsif @model == "log" %>
+    <div class="container">
+        <h2 class="text-center pt-5">'<%= @value %>'に一致するLog</h2>
+        <%= render 'search-log-index', datas: @datas %>
+    </div>
+    <% end %>
+</div>

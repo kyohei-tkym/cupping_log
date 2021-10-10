@@ -1,0 +1,27 @@
+<div class="comment">
+  <h2 class="mb-3">コメント</h2>
+  <% log.log_comments.each do |log_comment| %>
+  <div class="row">
+    <div class="comment-icon col-3"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 60, 60, fallback: "img/no_image.jpg", class:"rounded-circle"%></div>
+    <div class="comment-details col-9">
+      <p><%= log_comment.user.name %></p>
+      <p><%= log_comment.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+  </div>
+  <div>
+    <p><%=safe_join(log_comment.comment.split("\n"),tag(:br))%></p>
+    <div class="comment-details mb-3">
+      <% if log_comment.user == current_user %>
+        <%= link_to "削除", log_log_comment_path(log_comment.log, log_comment), method: :delete, class:"btn btn-outline-danger btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="row ml-1 mt-3">
+  <%= form_with(model:[log, log_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"form-controll col-9" %>
+    <%= f.submit "送信", class:"btn btn-success btn-sm col-3" %>
+  <% end %>
+  </div>
+</div>
+
