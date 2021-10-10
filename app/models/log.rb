@@ -1,7 +1,9 @@
 class Log < ApplicationRecord
   belongs_to :user
+
   has_many :log_images, dependent: :destroy
   accepts_attachments_for :log_images, attachment: :image
+
   has_many :log_comments, dependent: :destroy
 
   validates :coffee_name, presence: true

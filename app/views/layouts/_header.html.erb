@@ -29,6 +29,7 @@
             <% end %>
         </ul>
     </div>
+    <!--検索フォーム-->
     <div class="d-flex">
       <% if user_signed_in? %>
         <%= form_with url:search_path, method: :get, local: true do |f| %>

@@ -15,9 +15,7 @@
       <p class="show-text bold">メモ：<%= @log.memo %></p>
       <p id="star-rate-<%= @log.id %>">総合評価：</p>
       <% if @log.user == current_user %>
-        <!--編集画面へのリンクボタン-->
         <%= link_to "Edit", edit_log_path(@log), class:"btn btn-outline-success" %>
-        <!--削除ボタン-->
         <%= link_to "Destroy", log_path(@log), method: :delete, class:"btn btn-outline-danger" %>
       <% end %>
       <!--5段階評価の表示-->

@@ -1,13 +1,15 @@
 <div class="comment">
+  <!--コメント表示-->
   <h2 class="mb-3">コメント</h2>
   <% log.log_comments.each do |log_comment| %>
   <div class="row">
-    <div class="comment-icon col-3"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 60, 60, fallback: "img/no_image.jpg", class:"rounded-circle"%></div>
-    <div class="comment-details col-9">
-      <p><%= log_comment.user.name %></p>
+    <div class="comment-icon col-4"><%= attachment_image_tag log_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"rounded-circle"%></div>
+    <div class="comment-details col-8">
+      <p><%= link_to log_comment.user.name, user_path(log_comment.user_id), class:"text-decoration-none" %></p>
       <p><%= log_comment.created_at.strftime('%Y/%m/%d') %></p>
     </div>
   </div>
+  <!--コメント削除-->
   <div>
     <p><%=safe_join(log_comment.comment.split("\n"),tag(:br))%></p>
     <div class="comment-details mb-3">
@@ -17,11 +19,12 @@
     </div>
   </div>
   <% end %>
+  <!--コメント投稿-->
   <div class="row ml-1 mt-3">
-  <%= form_with(model:[log, log_comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"form-controll col-9" %>
-    <%= f.submit "送信", class:"btn btn-success btn-sm col-3" %>
-  <% end %>
+    <%= form_with(model:[log, log_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"form-controll col-9" %>
+      <%= f.submit "送信", class:"btn btn-success btn-sm col-3" %>
+    <% end %>
   </div>
 </div>
 

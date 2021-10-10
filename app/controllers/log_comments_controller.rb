@@ -15,7 +15,7 @@ class LogCommentsController < ApplicationController
   end
 
   private
-
+  # ----アクセス権限----
   def ensure_user
     log_comments = current_user.log_comments
     log_comments = log_comments.find_by(params[:id], log_id: params[:log_id])

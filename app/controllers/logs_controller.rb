@@ -8,11 +8,11 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params)
     @log.user_id = current_user.id
-    @log.save
+    if @log.save
     redirect_to logs_path
-    # else
-    #   render :new
-    # end
+    else
+     render :new
+    end
   end
 
   def index
@@ -42,7 +42,7 @@ class LogsController < ApplicationController
   end
 
   private
-
+  # ----アクセス権限----
   def ensure_user
     @log = current_user.log
     @log = @log.find_by(params[:id])
