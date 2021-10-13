@@ -1,4 +1,5 @@
 # Cupping Log
+![スクリーンショット 2021-10-13 22 57 54](https://user-images.githubusercontent.com/81724226/137147807-6e6fc80e-a7e6-4678-9d08-fb8de67bf71d.png)
 
 ## サイト概要
 コーヒーは奥深い飲み物で、飲み比べると豆の種類や焙煎法によって全く味が変わります。
